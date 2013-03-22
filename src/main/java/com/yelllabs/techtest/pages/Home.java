@@ -2,10 +2,12 @@ package com.yelllabs.techtest.pages;
 
 import org.jbehave.web.selenium.FluentWebDriverPage;
 import org.jbehave.web.selenium.WebDriverProvider;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.seleniumhq.selenium.fluent.FluentWebElement;
 
-import static org.openqa.selenium.By.id;
-import static org.openqa.selenium.By.linkText;
-import static org.openqa.selenium.By.xpath;
+import static org.openqa.selenium.By.*;
 
 public class Home extends FluentWebDriverPage {
 
@@ -14,7 +16,7 @@ public class Home extends FluentWebDriverPage {
     }
 
     public void go() {
-        get("http://www.etsy.com");
+        get("http://www.yell.com");
     }
 
     public void go(String section) {
@@ -22,12 +24,17 @@ public class Home extends FluentWebDriverPage {
         link(xpath("@title = '" + section + "'")).click();
     }
 
-    public void search(String thing) {
-        input(id("search-query")).sendKeys(thing);
-        button(id("search_submit")).click();
+    public void searchForWhatWhere(String what, String where) {
+        input(id("search_whatInput")).clearField().sendKeys(what);
+        input(id("location")).clearField().sendKeys(where);
+        button(cssSelector("button.search-submit")).click();
     }
 
-    public void goToBuySection() {
-        link(linkText("Buy")).click();
+    public void goToReviewsSection() {
+        link(linkText("Reviews")).click();
+    }
+
+    public void goToVideosSection() {
+        link(linkText("Videos")).click();
     }
 }

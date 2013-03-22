@@ -43,7 +43,7 @@ public class AnnotatedStories extends InjectableEmbedder {
     public void run() throws Throwable {
         CrossReference crossReference = new CrossReference().withJsonOnly().withOutputAfterEachStory(true)
                 .excludingStoriesWithNoExecutedScenarios(true);
-        ContextView contextView = new LocalFrameContextView().sized(640, 120);
+        ContextView contextView = new LocalFrameContextView().sized(640, 80).located(10,10);
         SeleniumContext seleniumContext = new SeleniumContext();
         SeleniumStepMonitor stepMonitor = new SeleniumStepMonitor(contextView, seleniumContext,
                 crossReference.getStepMonitor());

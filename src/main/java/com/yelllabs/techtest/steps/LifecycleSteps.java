@@ -1,8 +1,13 @@
 package com.yelllabs.techtest.steps;
 
-import org.jbehave.core.annotations.BeforeScenario;
+import org.jbehave.core.annotations.AfterScenario;
+import org.jbehave.core.annotations.BeforeStories;
+import org.jbehave.core.annotations.BeforeStory;
 import org.jbehave.web.selenium.WebDriverProvider;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriverException;
+
+import java.util.Set;
 
 public class LifecycleSteps {
 
@@ -12,10 +17,41 @@ public class LifecycleSteps {
         this.webDriverProvider = webDriverProvider;
     }
 
-    @BeforeScenario
-    public void emptyCart() {
+
+    @BeforeStories
+    public void runBeforeAllStories() {
         try {
-            webDriverProvider.get().manage().deleteCookieNamed("uaid");
+            // do something
+            // ie. delete cookies
+            System.out.print("You can run something here before executing all the stories!\n\n");
+        } catch (WebDriverException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @BeforeStory
+    public void runBeforeEachStory() {
+        try {
+            // do something
+            // ie. delete cookies
+            System.out.print("You can run something here before executing every story!\n\n");
+        } catch (WebDriverException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @AfterScenario
+    public void deleteAllCookies() {
+        try {
+            // do something
+            // ie. delete cookies
+            System.out.println("Deleting all the cookies!");
+            Set<Cookie> cookies = webDriverProvider.get().manage().getCookies();
+            for (Cookie c : cookies) {
+                System.out.println("\tCookie: " + c.getName());
+            }
+            webDriverProvider.get().manage().deleteAllCookies();
+            System.out.println("All cookies where deleted!");
         } catch (WebDriverException e) {
             e.printStackTrace();
         }

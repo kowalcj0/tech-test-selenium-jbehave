@@ -23,7 +23,7 @@
      <constructor-arg ref="driverProvider"/>
   </bean>  
   
-  <bean id="etsySteps" class="com.yelllabs.techtest.steps.Steps">
+  <bean id="yellSteps" class="com.yelllabs.techtest.steps.Steps">
      <constructor-arg ref="pageFactory"/>
   </bean>  
 

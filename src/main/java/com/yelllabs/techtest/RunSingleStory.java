@@ -46,7 +46,7 @@ public class RunSingleStory extends InjectableEmbedder {
             CrossReference crossReference = new CrossReference().withJsonOnly().withOutputAfterEachStory(true)
                     .excludingStoriesWithNoExecutedScenarios(true);
 
-            ContextView contextView = new LocalFrameContextView().sized(640, 120);
+            ContextView contextView = new LocalFrameContextView().sized(640, 80).located(10,10);
 
             SeleniumContext seleniumContext = new SeleniumContext();
 
@@ -93,7 +93,7 @@ public class RunSingleStory extends InjectableEmbedder {
          */
         private String runTest()
         {
-            return "etsy_cart";
+            return "searchFromHomePage";
         }
 
 }
