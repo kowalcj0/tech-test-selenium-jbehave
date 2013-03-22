@@ -28,6 +28,9 @@ import static org.jbehave.core.io.CodeLocations.codeLocationFromClass;
 import static org.jbehave.core.reporters.Format.CONSOLE;
 import static org.jbehave.web.selenium.WebDriverHtmlOutput.WEB_DRIVER_HTML;
 
+/**
+ * Class which provides the link between the JBehave's executor framework (called Embedder) and the textual stories.
+ */
 public class Stories extends JUnitStories {
 
     PendingStepStrategy pendingStepStrategy = new FailingUponPendingStep();

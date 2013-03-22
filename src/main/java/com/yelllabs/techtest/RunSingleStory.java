@@ -1,12 +1,5 @@
 package com.yelllabs.techtest;
 
-/**
- * Created with IntelliJ IDEA.
- * User: jk
- * Date: 22/03/13
- * Time: 15:50
- * To change this template use File | Settings | File Templates.
- */
 import org.jbehave.core.InjectableEmbedder;
 import org.jbehave.core.annotations.Configure;
 import org.jbehave.core.annotations.UsingEmbedder;
@@ -32,6 +25,13 @@ import static org.jbehave.core.io.CodeLocations.codeLocationFromClass;
 import static org.jbehave.core.reporters.Format.CONSOLE;
 import static org.jbehave.web.selenium.WebDriverHtmlOutput.WEB_DRIVER_HTML;
 
+/**
+ * <p>A class that allows to run one desired story.
+ * To define which story you want to run, change the value of the returned string in the runTest() method</p>
+ * User: jk
+ * Date: 22/03/13
+ * Time: 15:50
+ */
 @RunWith(SpringAnnotatedEmbedderRunner.class)
 @Configure(using = SeleniumConfiguration.class, pendingStepStrategy = FailingUponPendingStep.class)
 @UsingEmbedder(embedder = Embedder.class, generateViewAfterStories = true, ignoreFailureInStories = true, ignoreFailureInView = false, storyTimeoutInSecs = 50000, threads = 1, metaFilters = "-skip")
@@ -89,7 +89,7 @@ public class RunSingleStory extends InjectableEmbedder {
          *
          * return "create_article";
          *
-         * @return
+         * @return User story name
          */
         private String runTest()
         {

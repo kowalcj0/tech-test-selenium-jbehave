@@ -9,6 +9,9 @@ import org.seleniumhq.selenium.fluent.FluentWebElement;
 
 import static org.openqa.selenium.By.*;
 
+/**
+ * Page object defining the home page
+ */
 public class Home extends FluentWebDriverPage {
 
     public Home(WebDriverProvider webDriverProvider) {

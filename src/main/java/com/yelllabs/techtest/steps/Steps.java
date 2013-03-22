@@ -1,21 +1,31 @@
 package com.yelllabs.techtest.steps;
 
+import com.yelllabs.techtest.pages.*;
 import org.hamcrest.Matchers;
 import org.jbehave.core.annotations.*;
-import com.yelllabs.techtest.pages.Home;
-import com.yelllabs.techtest.pages.PageFactory;
-import com.yelllabs.techtest.pages.SearchResults;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
+/**
+ * <p>
+ * A simple POJO, which will contain the Java methods that are mapped to the textual steps
+ * The methods need to annotated with one of the JBehave annotations and the annotated value
+ * should contain a regex pattern that matches the textual step</p>
+ */
 public class Steps {
 
     private Home home;
+    private Maps maps;
+    private Reviews reviews;
     private SearchResults searchResults;
+    private Videos videos;
 
     public Steps(PageFactory pageFactory){
         home = pageFactory.newHome();
+        maps = pageFactory.newMaps();
+        reviews = pageFactory.newReviews();
         searchResults = pageFactory.newSearchResults();
+        videos = pageFactory.newVideos();
     }
 
     @Given("I am on Yell.com")
