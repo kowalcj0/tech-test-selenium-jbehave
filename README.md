@@ -3,20 +3,22 @@
 Simple project based on the JBehave tutorial available at [github](https://github.com/jbehave/jbehave-tutorial)
 
 ## Pre-requisits
-JDK 6+
-Maven 2+
-Firefox
+
+* JDK 6+
+* Maven 2+
+* Firefox 10+
 
 
 ## Windows configuration
 
 Once all the required tools are installed, create two new system variables:
-JAVA\_HOME e.g.: JAVA\_HOME=C:\Program Files\Java\jdk1.7.0\_10
+* JAVA\_HOME e.g.: JAVA\_HOME=C:\Program Files\Java\jdk1.7.0\_10
 and
-M2\_HOME e.g.: M2\_HOME=C:\Program Files\apache-maven-3.0.5
+* M2\_HOME e.g.: M2\_HOME=C:\Program Files\apache-maven-3.0.5
 
-and add paths to the firefox, java and maven folders containing corresponding binaries to the Path variable:
-e.g: Path=WHATEVER\_WAS\_THERE\_BEFORE;C:\Program Files\Java\jdk1.7.0\_10\bin\;C:\Program Files\apache-maven-3.0.5\bin\;C:\Program Files (x86)\Mozilla Firefox\
+and add paths to the firefox, java and maven folders containing corresponding binaries to the Path variable, e.g.:
+
+    Path=WHATEVER\_WAS\_THERE\_BEFORE;C:\Program Files\Java\jdk1.7.0\_10\bin\;C:\Program Files\apache-maven-3.0.5\bin\;C:\Program Files (x86)\Mozilla Firefox\
 
 
 ## Linux configuration
