@@ -2,6 +2,32 @@
 
 Simple project based on the JBehave tutorial available at [github](https://github.com/jbehave/jbehave-tutorial)
 
+## Pre-requisits
+JDK 6+
+Maven 2+
+Firefox
+
+
+## Windows configuration
+
+Once all the required tools are installed, create two new system variables:
+JAVA\_HOME e.g.: JAVA\_HOME=C:\Program Files\Java\jdk1.7.0\_10
+and
+M2\_HOME e.g.: M2\_HOME=C:\Program Files\apache-maven-3.0.5
+
+and add paths to the firefox, java and maven folders containing corresponding binaries to the Path variable:
+e.g: Path=WHATEVER\_WAS\_THERE\_BEFORE;C:\Program Files\Java\jdk1.7.0\_10\bin\;C:\Program Files\apache-maven-3.0.5\bin\;C:\Program Files (x86)\Mozilla Firefox\
+
+
+## Linux configuration
+
+Is similar to Windows one.
+Simply make sure that:
+* JAVA\_HOME and M2\_HOME system variables are properly set.
+* firefox binary is on the PATH
+
+
+
 ## Running the stories
 
 This will run the build and (after a minute or so) Firefox will open and test the etsy.com website:
@@ -20,9 +46,10 @@ This will run a suite based on the meta filters in the three story files:
 
 ## Viewing the results
 
-In directory target/jbehave/view, a page named 'reports.html' has been generated, which you open that in any browser to the stories that have run and their execution status.
-
-There should be a row for each story.  The story reports are clickable to via links on the right-most column.
+After each run new report can be found in target/jbehave/view. 
+Report file is named: 'reports.html'
+There should be a row for each story.
+The story reports are clickable to via links on the right-most column.
 
 ## Using this tutorial to start your own JBehave-based integration tests for a web site.
 
