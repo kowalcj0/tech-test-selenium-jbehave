@@ -11,12 +11,12 @@ Simple project based on the JBehave tutorial available at [github](https://githu
 
 ## Windows configuration
 
-Once all the required tools are installed, create two new system variables:
-* JAVA\_HOME e.g.: JAVA\_HOME=C:\Program Files\Java\jdk1.7.0\_10
-and
-* M2\_HOME e.g.: M2\_HOME=C:\Program Files\apache-maven-3.0.5
+Once all the required tools are installed:
+* create two new system variables:
+    * JAVA\_HOME e.g.: JAVA\_HOME=C:\Program Files\Java\jdk1.7.0\_10
+    * M2\_HOME e.g.: M2\_HOME=C:\Program Files\apache-maven-3.0.5
 
-and add paths to the firefox, java and maven folders containing corresponding binaries to the Path variable, e.g.:
+* add paths to the firefox, java and maven folders containing corresponding binaries to the Path variable, e.g.:
 
     Path=WHATEVER\_WAS\_THERE\_BEFORE;C:\Program Files\Java\jdk1.7.0\_10\bin\;C:\Program Files\apache-maven-3.0.5\bin\;C:\Program Files (x86)\Mozilla Firefox\
 
@@ -29,10 +29,19 @@ Simply make sure that:
 * firefox binary is on the PATH
 
 
+## Running all the stories in IDE
 
-## Running the stories
+Right-click on the Stories class, select "Run 'Stories'"
+(tested in IntelliJ Idea 12)
 
-This will run the build and (after a minute or so) Firefox will open and test the etsy.com website:
+## Running a single story in IDE
+
+Right-click on the RunSingleStory class, select "Run 'RunSingleStory'"
+(tested in IntelliJ Idea 12)
+
+## Running stories from the command line
+
+This will run the build and (after a minute or so) Firefox will open and test the yell.com website:
 
     mvn clean install 
 
@@ -58,7 +67,7 @@ The story reports are clickable to via links on the right-most column.
 The tutorial aims to provide a fully-functional project that you can use to model you own project:
 
 1. src/main/java/com/yelllabs/techtest/Stories.java is the entry-point that JBehave uses to run the stories.
-2. src/main/stories contains the stories run by JBehave via EtsyDotComStories.java.
+2. src/main/stories contains the stories run by JBehave via Stories.java.
 3. src/main/java/com/yelllabs/techtest/steps/Steps.java contains the steps mapped to the textual steps.
 4. src/main/java/com/yelllabs/techtest/pages contains the Java page-objects used by steps to abstract in a more manageable and maintainable way the interaction with the web pages via Selenium WebDriver.
 5. src/main/resources/techtest-steps.xml contains the Spring configuration for composition the steps
