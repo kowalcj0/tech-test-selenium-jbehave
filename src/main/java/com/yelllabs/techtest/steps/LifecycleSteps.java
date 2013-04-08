@@ -23,7 +23,7 @@ public class LifecycleSteps {
         try {
             // do something
             // ie. delete cookies
-            System.out.print("You can run something here before executing all the stories!\n\n");
+            System.out.println("You can run something here before executing all the stories!\n\n");
         } catch (WebDriverException e) {
             e.printStackTrace();
         }
@@ -34,7 +34,7 @@ public class LifecycleSteps {
         try {
             // do something
             // ie. delete cookies
-            System.out.print("You can run something here before executing every story!\n\n");
+            System.out.println("You can run something here before executing every story!\n\n");
         } catch (WebDriverException e) {
             e.printStackTrace();
         }
@@ -45,7 +45,7 @@ public class LifecycleSteps {
         try {
             // do something
             // ie. delete cookies
-            System.out.println("Deleting all the cookies!");
+            System.out.println("\nDeleting all the cookies!");
             Set<Cookie> cookies = webDriverProvider.get().manage().getCookies();
             for (Cookie c : cookies) {
                 System.out.println("\tCookie: " + c.getName());

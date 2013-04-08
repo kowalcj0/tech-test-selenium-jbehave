@@ -51,14 +51,25 @@ public class Steps {
         home.goToReviewsSection();
     }
 
+    @Given("I want to browse through featured reviews")
+    @Composite(steps = {"Given I am on Yell.com",
+            "When I want to browse the reviews"})
+    public void browseToTheFeaturedReviewsPage() {
+    }
+
     @When("I want to browse the videos")
     public void goToVideos() {
         home.goToVideosSection();
     }
 
-    @When("I want to browse through featured videos")
+    @Given("I want to browse through featured videos")
     @Composite(steps = {"Given I am on Yell.com",
                         "When I want to browse the videos"})
-    public void browseToTheFeaturedVideosSection() {
+    public void browseToTheFeaturedVideosPage() {
+    }
+
+    @Then("I should see a list of featured short videos")
+    public void thereAreVideosListed(){
+        assertThat(videos.getNumberOfFeaturedVideos(), Matchers.greaterThan(0));
     }
 }

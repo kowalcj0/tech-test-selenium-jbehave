@@ -5,10 +5,7 @@ import org.jbehave.web.selenium.WebDriverProvider;
 import org.openqa.selenium.WebElement;
 import org.seleniumhq.selenium.fluent.FluentMatcher;
 import org.seleniumhq.selenium.fluent.FluentWebElements;
-
-import static org.openqa.selenium.By.className;
-import static org.openqa.selenium.By.cssSelector;
-import static org.openqa.selenium.By.xpath;
+import static org.openqa.selenium.By.*;
 import static org.seleniumhq.selenium.fluent.Period.secs;
 
 public class SearchResults extends FluentWebDriverPage {
@@ -17,7 +14,7 @@ public class SearchResults extends FluentWebDriverPage {
         super(webDriverProvider);
     }
 
-    public  int resultsFound() {
+    public int resultsFound() {
         return getResultElements().size();
     }
 

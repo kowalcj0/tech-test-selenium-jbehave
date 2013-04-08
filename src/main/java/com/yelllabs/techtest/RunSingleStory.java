@@ -1,22 +1,21 @@
 package com.yelllabs.techtest;
 
-import org.jbehave.core.InjectableEmbedder;
-import org.jbehave.core.annotations.Configure;
-import org.jbehave.core.annotations.UsingEmbedder;
-import org.jbehave.core.annotations.spring.UsingSpring;
+
 import org.jbehave.core.configuration.Configuration;
-import org.jbehave.core.embedder.Embedder;
 import org.jbehave.core.embedder.StoryControls;
 import org.jbehave.core.failures.FailingUponPendingStep;
+import org.jbehave.core.failures.PendingStepStrategy;
 import org.jbehave.core.io.LoadFromClasspath;
 import org.jbehave.core.io.StoryFinder;
-import org.jbehave.core.junit.spring.SpringAnnotatedEmbedderRunner;
+import org.jbehave.core.junit.JUnitStories;
 import org.jbehave.core.reporters.CrossReference;
 import org.jbehave.core.reporters.Format;
 import org.jbehave.core.reporters.StoryReporterBuilder;
+import org.jbehave.core.steps.InjectableStepsFactory;
+import org.jbehave.core.steps.spring.SpringApplicationContextFactory;
+import org.jbehave.core.steps.spring.SpringStepsFactory;
 import org.jbehave.web.selenium.*;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.springframework.context.ApplicationContext;
 
 import java.util.List;
 
@@ -26,74 +25,54 @@ import static org.jbehave.core.reporters.Format.CONSOLE;
 import static org.jbehave.web.selenium.WebDriverHtmlOutput.WEB_DRIVER_HTML;
 
 /**
- * <p>A class that allows to run one desired story.
- * To define which story you want to run, change the value of the returned string in the runTest() method</p>
+ * <p>A class that allows to run single story.
+ * To define which story you want to run, change the name of the returned story in the runTest() method</p>
  * User: jk
- * Date: 22/03/13
+ * Date: 2013-04-08
  * Time: 15:50
  */
-@RunWith(SpringAnnotatedEmbedderRunner.class)
-@Configure(using = SeleniumConfiguration.class, pendingStepStrategy = FailingUponPendingStep.class)
-@UsingEmbedder(embedder = Embedder.class, generateViewAfterStories = true, ignoreFailureInStories = true, ignoreFailureInView = false, storyTimeoutInSecs = 50000, threads = 1, metaFilters = "-skip")
-@UsingSpring(resources = {"techtest-steps.xml"})
-public class RunSingleStory extends InjectableEmbedder {
+public class RunSingleStory extends JUnitStories {
 
-        public RunSingleStory() {
-        }
+    PendingStepStrategy pendingStepStrategy = new FailingUponPendingStep();
+    CrossReference crossReference = new CrossReference().withJsonOnly().withPendingStepStrategy(pendingStepStrategy)
+            .withOutputAfterEachStory(true).excludingStoriesWithNoExecutedScenarios(true);
+    ContextView contextView = new LocalFrameContextView().sized(640, 80).located(10, 10);
+    SeleniumContext seleniumContext = new SeleniumContext();
+    SeleniumStepMonitor stepMonitor = new SeleniumStepMonitor(contextView, seleniumContext,
+            crossReference.getStepMonitor());
+    Format[] formats = new Format[]{new SeleniumContextOutput(seleniumContext), CONSOLE, WEB_DRIVER_HTML};
+    StoryReporterBuilder reporterBuilder = new StoryReporterBuilder()
+            .withCodeLocation(codeLocationFromClass(RunSingleStory.class)).withFailureTrace(true)
+            .withFailureTraceCompression(true).withDefaultFormats().withFormats(formats)
+            .withCrossReference(crossReference);
 
-        @Test
-        public void run() throws Throwable {
-            CrossReference crossReference = new CrossReference().withJsonOnly().withOutputAfterEachStory(true)
-                    .excludingStoriesWithNoExecutedScenarios(true);
+    @Override
+    public Configuration configuration() {
+        return new SeleniumConfiguration().useSeleniumContext(seleniumContext)
+                .usePendingStepStrategy(pendingStepStrategy)
+                .useStoryControls(new StoryControls().doResetStateBeforeScenario(false)).useStepMonitor(stepMonitor)
+                .useStoryLoader(new LoadFromClasspath(RunSingleStory.class))
+                .useStoryReporterBuilder(reporterBuilder);
+    }
 
-            ContextView contextView = new LocalFrameContextView().sized(640, 80).located(10,10);
+    @Override
+    public InjectableStepsFactory stepsFactory() {
+        ApplicationContext context = new SpringApplicationContextFactory("techtest-steps.xml").createApplicationContext();
+        return new SpringStepsFactory(configuration(), context);
+    }
 
-            SeleniumContext seleniumContext = new SeleniumContext();
+    @Override
+    protected List<String> storyPaths() {
+        return new StoryFinder().findPaths(codeLocationFromClass(this.getClass()).getFile(),
+                asList("**/" + System.getProperty("storyFilter", runTest()) + ".story"), null);
+    }
 
-            SeleniumStepMonitor stepMonitor = new SeleniumStepMonitor(contextView, seleniumContext,
-                    crossReference.getStepMonitor());
-
-            Format[] formats = new Format[] { new SeleniumContextOutput(seleniumContext), CONSOLE, WEB_DRIVER_HTML };
-
-            StoryReporterBuilder reporterBuilder = new StoryReporterBuilder()
-                    .withCodeLocation(codeLocationFromClass(Stories.class))
-                    .withFailureTrace(true)
-                    .withFailureTraceCompression(true)
-                    .withDefaultFormats()
-                    .withFormats(formats)
-                    .withCrossReference(crossReference);
-
-            Configuration configuration = injectedEmbedder().configuration();
-
-            configuration.useFailureStrategy(new FailingUponPendingStep())
-                    .useStoryControls(new StoryControls().doResetStateBeforeScenario(false)).useStepMonitor(stepMonitor)
-                    .useStoryLoader(new LoadFromClasspath(Stories.class))
-                    .useStoryReporterBuilder(reporterBuilder);
-            if (configuration instanceof SeleniumConfiguration) {
-                SeleniumConfiguration seleniumConfiguration = (SeleniumConfiguration) configuration;
-                seleniumConfiguration.useSeleniumContext(seleniumContext);
-            }
-            injectedEmbedder().runStoriesAsPaths(storyPaths());
-        }
-
-        protected List<String> storyPaths()
-        {
-            return new StoryFinder().findPaths(codeLocationFromClass(this.getClass()).getFile(),
-                    asList("**/" + System.getProperty("storyFilter", runTest()) + ".story"), null);
-        }
-
-        /**
-         * The single test you want to run.
-         *
-         * E.g. if you want to run "create_article.story" you simply specify:
-         *
-         * return "create_article";
-         *
-         * @return User story name
-         */
-        private String runTest()
-        {
-            return "searchFromHomePage";
-        }
+    /*
+     * Change the return value to an existing story filename, i.e:
+     * return "create_article";
+     */
+    private String runTest() {
+        return "searchFromHomePage";
+    }
 
 }

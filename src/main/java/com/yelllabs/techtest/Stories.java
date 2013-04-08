@@ -36,7 +36,7 @@ public class Stories extends JUnitStories {
     PendingStepStrategy pendingStepStrategy = new FailingUponPendingStep();
     CrossReference crossReference = new CrossReference().withJsonOnly().withPendingStepStrategy(pendingStepStrategy)
             .withOutputAfterEachStory(true).excludingStoriesWithNoExecutedScenarios(true);
-    ContextView contextView = new LocalFrameContextView().sized(640, 120);
+    ContextView contextView = new LocalFrameContextView().sized(640, 80).located(10,10);
     SeleniumContext seleniumContext = new SeleniumContext();
     SeleniumStepMonitor stepMonitor = new SeleniumStepMonitor(contextView, seleniumContext,
             crossReference.getStepMonitor());

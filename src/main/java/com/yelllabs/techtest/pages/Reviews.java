@@ -15,8 +15,8 @@ public class Reviews extends FluentWebDriverPage {
         super(webDriverProvider);
     }
 
-    /**
-     * Go directly to this page
+    /*
+     Go directly to this page
     */
     public void go(){
         get("http://www.yell.com/reviews");

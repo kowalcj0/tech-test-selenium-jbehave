@@ -32,7 +32,8 @@ import static org.jbehave.web.selenium.WebDriverHtmlOutput.WEB_DRIVER_HTML;
 
 
 /**
- *
+ *  Class used by jbehave-maven-plugin to run stories
+ *  Go to pom.xml to find out its usage.
  */
 @RunWith(SpringAnnotatedEmbedderRunner.class)
 @Configure(using = SeleniumConfiguration.class, pendingStepStrategy = FailingUponPendingStep.class)
