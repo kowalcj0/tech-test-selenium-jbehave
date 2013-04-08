@@ -57,13 +57,18 @@ NOTES:
 
 ## Running all the stories in IDE
 
-Right-click on the Stories class, select "Run 'Stories'"
-(tested in IntelliJ Idea 12)
+IntelliJ Idea 12
+* Right-click on the Stories class, select "Run 'Stories'"
+Eclipse EE Juno SR2 with M2E plugin v1.3.0
+* Right-click on the Stories class, select "Run as" -> "JUnit Test"
 
 ## Running a single story in IDE
 
-Right-click on the RunSingleStory class, select "Run 'RunSingleStory'"
-(tested in IntelliJ Idea 12)
+IntelliJ Idea 12
+* Right-click on the RunSingleStory class, select "Run 'RunSingleStory'"
+Eclipse EE Juno SR2 with M2E plugin v1.3.0
+* Right-click on the RunSingleStory class, select "Run as" -> "JUnit Test"
+
 
 ## Running stories from the command line
 
@@ -98,5 +103,7 @@ The tutorial aims to provide a fully-functional project that you can use to mode
 4. src/main/java/com/yelllabs/techtest/pages contains the Java page-objects used by steps to abstract in a more manageable and maintainable way the interaction with the web pages via Selenium WebDriver.
 5. src/main/resources/techtest-steps.xml contains the Spring configuration for composition the steps
 
-## Links
+
+
+
 [1]: http://code.google.com/p/selenium/wiki/FirefoxDriver   "FirefoxDriver"
