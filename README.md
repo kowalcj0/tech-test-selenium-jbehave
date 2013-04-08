@@ -20,13 +20,39 @@ Once all the required tools are installed:
 
     Path=WHATEVER\_WAS\_THERE\_BEFORE;C:\Program Files\Java\jdk1.7.0\_10\bin\;C:\Program Files\apache-maven-3.0.5\bin\;C:\Program Files (x86)\Mozilla Firefox\
 
+NOTES:
+* More information on [FirefoxDriver] [1] 
+* Handy [tutorial](http://www.computerhope.com/issues/ch000549.htm) on setting $PATH and environmental variables in Windows.
+* FF binary (firefox.exe) can usually be found in %PROGRAMFILES%\Mozilla Firefox
+
 
 ## Linux configuration
 
 Is similar to Windows one.
 Simply make sure that:
 * JAVA\_HOME and M2\_HOME system variables are properly set.
-* firefox binary is on the PATH
+* folder with Firefox binary is in your $PATH system variable
+
+NOTES:
+* More information on [FirefoxDriver] [1] 
+* Handy [tutorial](http://www.cyberciti.biz/faq/set-environment-variable-linux/) on setting $PATH and environmental variables under \*nix systems.
+* Another one just on setting up the [java path variable](http://www.cyberciti.biz/faq/linux-unix-set-java_home-path-variable/).
+* FF binary can be found using "which" command.
+
+
+## Mac configuration
+
+Same thing as with Windows and Linux
+You need to make sure that:
+* JAVA\_HOME and M2\_HOME are set accordingly
+* folder with Firefox binary is in your $PATH system variable
+
+NOTES:
+* More information on [FirefoxDriver] [1] 
+* Here's a nice [tutorial](http://www.semioticpixels.com/crib-notes/mac-10-7-path-settings-and-environment-variables) on setting $PATH and environmental variables in Mac.
+* Usually FF binary (filename is firefox-bin) is placed in:
+    
+    /Applications/Firefox.app/Contents/MacOS/
 
 
 ## Running all the stories in IDE
@@ -72,4 +98,5 @@ The tutorial aims to provide a fully-functional project that you can use to mode
 4. src/main/java/com/yelllabs/techtest/pages contains the Java page-objects used by steps to abstract in a more manageable and maintainable way the interaction with the web pages via Selenium WebDriver.
 5. src/main/resources/techtest-steps.xml contains the Spring configuration for composition the steps
 
-
+## Links
+[1]: http://code.google.com/p/selenium/wiki/FirefoxDriver   "FirefoxDriver"
