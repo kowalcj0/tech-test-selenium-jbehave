@@ -55,17 +55,30 @@ NOTES:
     /Applications/Firefox.app/Contents/MacOS/
 
 
+## Add new user story
+
+Create a new text file with '.story' extension in the src/main/stories folder.
+Then write down the body of the user story you want to run.
+
+
 ## Running all the stories in IDE
 
 IntelliJ Idea 12
 * Right-click on the Stories class, select "Run 'Stories'"
+
 Eclipse EE Juno SR2 with M2E plugin v1.3.0
 * Right-click on the Stories class, select "Run as" -> "JUnit Test"
 
 ## Running a single story in IDE
 
+Go to the 'RunSingleStory.java' method 'runTest' and change the name of the user story you want to run.
+Remember that the story name has to be exactly the same as the story filename but without the '.story' extension.
+
+After that in:
+
 IntelliJ Idea 12
 * Right-click on the RunSingleStory class, select "Run 'RunSingleStory'"
+
 Eclipse EE Juno SR2 with M2E plugin v1.3.0
 * Right-click on the RunSingleStory class, select "Run as" -> "JUnit Test"
 
