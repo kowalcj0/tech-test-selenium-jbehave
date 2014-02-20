@@ -66,6 +66,7 @@ public class Steps {
     @Composite(steps = {"Given I am on Yell.com",
                         "When I want to browse the videos"})
     public void browseToTheFeaturedVideosPage() {
+        // this is a composite step, so nothing should be added here
     }
 
     @Then("I should see a list of featured short videos")

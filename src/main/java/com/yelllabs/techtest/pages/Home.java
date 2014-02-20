@@ -3,8 +3,14 @@ package com.yelllabs.techtest.pages;
 import org.jbehave.web.selenium.FluentWebDriverPage;
 import org.jbehave.web.selenium.WebDriverProvider;
 import org.openqa.selenium.By;
+import org.openqa.selenium.lift.Matchers;
+
+import java.util.regex.Matcher;
+
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import static org.openqa.selenium.By.*;
+import static org.seleniumhq.selenium.fluent.Period.secs;
 
 /**
  * Page object defining the home page
@@ -30,6 +36,8 @@ public class Home extends FluentWebDriverPage {
 
     public void go() {
         get("http://www.yell.com");
+        // wait for page to load
+        assert(within(secs(5)).input(inputSearchWhat).isDisplayed().value());
     }
 
     public void go(String section) {
@@ -38,16 +46,16 @@ public class Home extends FluentWebDriverPage {
     }
 
     public void searchForWhatWhere(String what, String where) {
-        input(inputSearchWhat).clearField().sendKeys(what);
+        within(secs(5)).input(inputSearchWhat).clearField().sendKeys(what);
         input(inputSearchWhere).clearField().sendKeys(where);
         button(buttonSubmitSearch).click();
     }
 
     public void goToReviewsSection() {
-        link(linkReviews).click();
+        within(secs(5)).link(linkReviews).click();
     }
 
     public void goToVideosSection() {
-        link(linkVideos).click();
+        within(secs(5)).link(linkVideos).click();
     }
 }

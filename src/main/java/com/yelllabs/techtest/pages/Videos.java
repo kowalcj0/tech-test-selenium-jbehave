@@ -19,7 +19,7 @@ public class Videos extends FluentWebDriverPage {
       Go directly to this page
     */
     public void go(){
-        get("http://www.yell.com/videos");
+        get("http://www.yell.com/video/VideoAction.do");
     }
 
 
@@ -29,6 +29,6 @@ public class Videos extends FluentWebDriverPage {
 
 
     private FluentWebElements findVideos(){
-        return within(secs(2)).lis(listOfVideos);
+        return within(secs(5)).lis(listOfVideos);
     }
 }

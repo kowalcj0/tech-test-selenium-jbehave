@@ -72,7 +72,7 @@ public class RunSingleStory extends JUnitStories {
      * return "create_article";
      */
     private String runTest() {
-        return "searchFromHomePage";
+        return "viewingVideos";
     }
 
 }

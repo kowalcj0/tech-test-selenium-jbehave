@@ -29,9 +29,17 @@ public class StoryMaps extends JUnitStoryMaps {
     @Override
     public Configuration configuration() {
         return new MostUsefulConfiguration()
-            .useStoryParser(new RegexStoryParser(new ExamplesTableFactory(new LoadFromClasspath(this.getClass()))))
-            .useStoryReporterBuilder(new StoryReporterBuilder()
-                .withCodeLocation(CodeLocations.codeLocationFromClass(this.getClass())));
+            .useStoryParser(
+                    new RegexStoryParser(
+                            new ExamplesTableFactory(
+                                    new LoadFromClasspath(this.getClass())
+                            )
+                    )
+            )
+            .useStoryReporterBuilder(
+                    new StoryReporterBuilder()
+                            .withCodeLocation(CodeLocations.codeLocationFromClass(this.getClass()))
+            );
     }
 
     @Override

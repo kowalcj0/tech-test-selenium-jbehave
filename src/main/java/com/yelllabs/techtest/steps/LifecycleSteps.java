@@ -40,18 +40,21 @@ public class LifecycleSteps {
         }
     }
 
+
     @AfterScenario
+    public void runAfterEachScenario() {
+        //deleteAllCookies();
+    }
+
+
     public void deleteAllCookies() {
         try {
-            // do something
-            // ie. delete cookies
             System.out.println("\nDeleting all the cookies!");
             Set<Cookie> cookies = webDriverProvider.get().manage().getCookies();
             for (Cookie c : cookies) {
                 System.out.println("\tCookie: " + c.getName());
             }
             webDriverProvider.get().manage().deleteAllCookies();
-            System.out.println("All cookies where deleted!");
         } catch (WebDriverException e) {
             e.printStackTrace();
         }

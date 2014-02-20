@@ -34,23 +34,38 @@ import static org.jbehave.web.selenium.WebDriverHtmlOutput.WEB_DRIVER_HTML;
 public class Stories extends JUnitStories {
 
     PendingStepStrategy pendingStepStrategy = new FailingUponPendingStep();
-    CrossReference crossReference = new CrossReference().withJsonOnly().withPendingStepStrategy(pendingStepStrategy)
-            .withOutputAfterEachStory(true).excludingStoriesWithNoExecutedScenarios(true);
-    ContextView contextView = new LocalFrameContextView().sized(640, 80).located(10,10);
+    CrossReference crossReference = new CrossReference()
+            .withJsonOnly()
+            .withPendingStepStrategy(pendingStepStrategy)
+            .withOutputAfterEachStory(true)
+            .excludingStoriesWithNoExecutedScenarios(true);
+    ContextView contextView = new LocalFrameContextView()
+            .sized(640, 80)
+            .located(10, 10);
     SeleniumContext seleniumContext = new SeleniumContext();
-    SeleniumStepMonitor stepMonitor = new SeleniumStepMonitor(contextView, seleniumContext,
+    SeleniumStepMonitor stepMonitor = new SeleniumStepMonitor(
+            contextView,
+            seleniumContext,
             crossReference.getStepMonitor());
     Format[] formats = new Format[] { new SeleniumContextOutput(seleniumContext), CONSOLE, WEB_DRIVER_HTML };
     StoryReporterBuilder reporterBuilder = new StoryReporterBuilder()
-            .withCodeLocation(codeLocationFromClass(Stories.class)).withFailureTrace(true)
-            .withFailureTraceCompression(true).withDefaultFormats().withFormats(formats)
+            .withCodeLocation(codeLocationFromClass(Stories.class))
+            .withFailureTrace(true)
+            .withFailureTraceCompression(true)
+            .withDefaultFormats()
+            .withFormats(formats)
             .withCrossReference(crossReference);
 
     @Override
     public Configuration configuration() {
-        return new SeleniumConfiguration().useSeleniumContext(seleniumContext)
+        return new SeleniumConfiguration()
+                .useSeleniumContext(seleniumContext)
                 .usePendingStepStrategy(pendingStepStrategy)
-                .useStoryControls(new StoryControls().doResetStateBeforeScenario(false)).useStepMonitor(stepMonitor)
+                .useStoryControls(
+                        new StoryControls()
+                                .doResetStateBeforeScenario(false)
+                )
+                .useStepMonitor(stepMonitor)
                 .useStoryLoader(new LoadFromClasspath(Stories.class))
                 .useStoryReporterBuilder(reporterBuilder);
     }
@@ -63,8 +78,12 @@ public class Stories extends JUnitStories {
 
     @Override
     protected List<String> storyPaths() {
-        return new StoryFinder().findPaths(codeLocationFromClass(this.getClass()).getFile(),
-                asList("**/" + System.getProperty("storyFilter", "*") + ".story"), null);
+        return new StoryFinder()
+                .findPaths(
+                        codeLocationFromClass(this.getClass()).getFile(),
+                        asList("**/" + System.getProperty("storyFilter", "*") + ".story"),
+                        null
+                );
     }
 
 }

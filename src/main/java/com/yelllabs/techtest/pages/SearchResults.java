@@ -20,7 +20,7 @@ public class SearchResults extends FluentWebDriverPage {
 
 
     private FluentWebElements getResultElements() {
-        return within(secs(2)).links(cssSelector(".fn.org"));
+        return within(secs(5)).divs(className("parentListing"));
     }
 
     private FluentMatcher lowerCaseTitleContaining(final String thing) {

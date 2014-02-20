@@ -1,8 +1,19 @@
 # yell.com using Java with Spring, Selenium and JBehave
 
 Simple project based on the JBehave tutorial available at [github](https://github.com/jbehave/jbehave-tutorial)
+You can use this example project to build your own JBehave-based testing solution.
 
-## Pre-requisits
+
+## Project structure 
+
+1. src/main/java/com/yelllabs/techtest/Stories.java is the entry-point that JBehave uses to run the stories.
+2. src/main/stories contains the stories run by JBehave via Stories.java.
+3. src/main/java/com/yelllabs/techtest/steps/Steps.java contains the steps mapped to the textual steps.
+4. src/main/java/com/yelllabs/techtest/pages contains the Java page-objects used by steps to abstract in a more manageable and maintainable way the interaction with the web pages via Selenium WebDriver.
+5. src/main/resources/techtest-steps.xml contains the Spring configuration for composition the steps
+
+
+## Prerequisites
 
 * JDK 6+
 * Maven 2+
@@ -55,7 +66,7 @@ NOTES:
     /Applications/Firefox.app/Contents/MacOS/
 
 
-## Add new user story
+## Add a new user story
 
 Create a new text file with '.story' extension in the src/main/stories folder.
 Then write down the body of the user story you want to run.
@@ -106,17 +117,9 @@ Report file is named: 'reports.html'
 There should be a row for each story.
 The story reports are clickable to via links on the right-most column.
 
-## Using this tutorial to start your own JBehave-based integration tests for a web site.
-
-The tutorial aims to provide a fully-functional project that you can use to model you own project:
-
-1. src/main/java/com/yelllabs/techtest/Stories.java is the entry-point that JBehave uses to run the stories.
-2. src/main/stories contains the stories run by JBehave via Stories.java.
-3. src/main/java/com/yelllabs/techtest/steps/Steps.java contains the steps mapped to the textual steps.
-4. src/main/java/com/yelllabs/techtest/pages contains the Java page-objects used by steps to abstract in a more manageable and maintainable way the interaction with the web pages via Selenium WebDriver.
-5. src/main/resources/techtest-steps.xml contains the Spring configuration for composition the steps
-
-
 
 
 [1]: http://code.google.com/p/selenium/wiki/FirefoxDriver   "FirefoxDriver"
+
+
+
