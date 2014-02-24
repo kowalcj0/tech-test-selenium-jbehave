@@ -1,11 +1,10 @@
-package com.yelllabs.techtest.pages;
+package tech.test.pages;
 
 import org.jbehave.web.selenium.FluentWebDriverPage;
 import org.jbehave.web.selenium.WebDriverProvider;
 import org.openqa.selenium.By;
-import org.openqa.selenium.lift.Matchers;
 
-import java.util.regex.Matcher;
+import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -37,7 +36,7 @@ public class Home extends FluentWebDriverPage {
     public void go() {
         get("http://www.yell.com");
         // wait for page to load
-        assert(within(secs(5)).input(inputSearchWhat).isDisplayed().value());
+        getDriverProvider().get().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
     public void go(String section) {

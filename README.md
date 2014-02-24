@@ -1,4 +1,4 @@
-# yell.com using Java with Spring, Selenium and JBehave
+# A JBehave Selenium tutorial project
 
 Simple project based on the JBehave tutorial available at [github](https://github.com/jbehave/jbehave-tutorial)
 You can use this example project to build your own JBehave-based testing solution.
@@ -6,10 +6,10 @@ You can use this example project to build your own JBehave-based testing solutio
 
 ## Project structure 
 
-1. src/main/java/com/yelllabs/techtest/Stories.java is the entry-point that JBehave uses to run the stories.
+1. src/main/java/tech/test/Stories.java is the entry-point that JBehave uses to run the stories.
 2. src/main/stories contains the stories run by JBehave via Stories.java.
-3. src/main/java/com/yelllabs/techtest/steps/Steps.java contains the steps mapped to the textual steps.
-4. src/main/java/com/yelllabs/techtest/pages contains the Java page-objects used by steps to abstract in a more manageable and maintainable way the interaction with the web pages via Selenium WebDriver.
+3. src/main/java/tech/test/steps/Steps.java contains the steps mapped to the textual steps.
+4. src/main/java/tech/test/pages contains the Java page-objects used by steps to abstract in a more manageable and maintainable way the interaction with the web pages via Selenium WebDriver.
 5. src/main/resources/techtest-steps.xml contains the Spring configuration for composition the steps
 
 
@@ -96,11 +96,9 @@ Eclipse EE Juno SR2 with M2E plugin v1.3.0
 
 ## Running stories from the command line
 
-This will run the build and (after a minute or so) Firefox will open and test the yell.com website:
+This will run the build and (after a minute or so) Firefox will open and run your tests against the yell.com website:
 
-    mvn clean install 
-
-You should see Firefox (installed on your system) flicker as it tests yell.com
+    mvn clean install
 
 This will run a single story (one contained in a searchFromHomePage.story file):
 

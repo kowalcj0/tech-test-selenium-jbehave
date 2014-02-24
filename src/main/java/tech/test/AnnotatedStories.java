@@ -1,4 +1,4 @@
-package com.yelllabs.techtest;
+package tech.test;
 
 import java.util.List;
 

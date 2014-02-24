@@ -1,4 +1,4 @@
-package com.yelllabs.techtest.pages;
+package tech.test.pages;
 
 import org.jbehave.web.selenium.WebDriverProvider;
 

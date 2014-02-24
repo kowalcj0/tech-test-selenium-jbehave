@@ -1,6 +1,6 @@
-package com.yelllabs.techtest.steps;
+package tech.test.steps;
 
-import com.yelllabs.techtest.pages.*;
+import tech.test.pages.*;
 import org.hamcrest.Matchers;
 import org.jbehave.core.annotations.*;
 

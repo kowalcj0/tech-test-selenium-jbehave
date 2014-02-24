@@ -1,9 +1,10 @@
-package com.yelllabs.techtest.steps;
+package tech.test.steps;
 
 import org.jbehave.core.annotations.AfterScenario;
 import org.jbehave.core.annotations.BeforeStories;
 import org.jbehave.core.annotations.BeforeStory;
 import org.jbehave.web.selenium.WebDriverProvider;
+import org.junit.After;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriverException;
 
@@ -46,6 +47,10 @@ public class LifecycleSteps {
         //deleteAllCookies();
     }
 
+    @After
+    public void tearDown() {
+        webDriverProvider.get().quit();
+    }
 
     public void deleteAllCookies() {
         try {

@@ -11,19 +11,19 @@
     <constructor-arg ref="driverProvider"/>
   </bean>
 
-  <bean id="lifecycleSteps" class="com.yelllabs.techtest.steps.LifecycleSteps">
+  <bean id="lifecycleSteps" class="tech.test.steps.LifecycleSteps">
     <constructor-arg ref="driverProvider"/>
   </bean>
 
-  <bean id="journaledSteps" class="com.yelllabs.techtest.steps.JournaledStoriesSteps">
+  <bean id="journaledSteps" class="tech.test.steps.JournaledStoriesSteps">
     <constructor-arg ref="driverProvider"/>
   </bean>
 
-  <bean id="pageFactory" class="com.yelllabs.techtest.pages.PageFactory">
+  <bean id="pageFactory" class="tech.test.pages.PageFactory">
      <constructor-arg ref="driverProvider"/>
   </bean>  
   
-  <bean id="yellSteps" class="com.yelllabs.techtest.steps.Steps">
+  <bean id="steps" class="tech.test.steps.Steps">
      <constructor-arg ref="pageFactory"/>
   </bean>  
 

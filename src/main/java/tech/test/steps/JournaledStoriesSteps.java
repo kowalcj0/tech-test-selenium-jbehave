@@ -1,4 +1,4 @@
-package com.yelllabs.techtest.steps;
+package tech.test.steps;
 
 import org.jbehave.core.annotations.AfterStories;
 import org.jbehave.web.selenium.FirefoxWebDriverProvider;
