@@ -47,11 +47,6 @@ public class LifecycleSteps {
         //deleteAllCookies();
     }
 
-    @After
-    public void tearDown() {
-        webDriverProvider.get().quit();
-    }
-
     public void deleteAllCookies() {
         try {
             System.out.println("\nDeleting all the cookies!");
